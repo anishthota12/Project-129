@@ -38,8 +38,8 @@ function gotPoses(results) {
         leftWristScore = results[0].pose.keypoints[9].score;
         console.log("%cLeft Wrist Score: " + leftWristScore, "color: red; font-weight: bold;");
 
-        rightWristX = results[0].pose.leftWrist.x;
-        rightWristY = results[0].pose.leftWrist.y;
+        rightWristX = results[0].pose.rightWrist.x;
+        rightWristY = results[0].pose.rightWrist.y;
         console.log("%cRight Wrist X: " + rightWristX + "; Right Wrist Y: " + rightWristY, "color: lime; font-weight: bold;");
     }
 }
@@ -52,7 +52,7 @@ function draw() {
     songHappierStatus = songHappier.isPlaying();
     if (leftWristScore > 0.2) {
         circle(leftWristX, leftWristY, 30);
-        songHappier.stop();
+        songBeKind.stop();
         if (songHappierStatus == false) {
             songHappier.play();
             songHappier.setVolume(.1); // if there is full volume, the song is way too loud
